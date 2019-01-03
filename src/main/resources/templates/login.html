@@ -236,38 +236,42 @@
             if ($("#frmLogin").valid()) {
                 var username = $("#username").val();
                 var siteId = $("#siteId").val();
-                var colorCode = $("#cpBinding").val();
-                // console.log(username);
-                // console.log(siteId);
-                // console.log(colorCode);
+                // var colorCode = $("#cpBinding").val();
                 var objectJson = {
                     username: username,
                     siteId: siteId,
-                    colorCode: colorCode
+                    colorCode: ''
                 }
+
+                
 
                 var myObjectArray = [];
                 myObjectArray.push(objectJson)
-                localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
+                // var localObject = JSON.parse(localStorage.getItem("colorPicker"));
+                // localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
+                checkLocalStorage(username);
 
-                // function checkLocalStorage() {
-                //     var objArray = JSON.parse(localStorage.getItem("colorPicker"));
-                //     var count = 0;
-                //     if (objArray == null) {
-                //         localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
-                //     } else {
-                //         objArray.forEach(item => {
-                //             if (item.username == objectJson.username && item.siteId == objectJson.siteId) {
-                //                 item.colorCode = objectJson.colorCode;
-                //             } else {
-                //                 count++;
-                //             }
-                //         });
-                //         if (count > 0) {
-                //             objArray.push(objectJson);
-                //         }
-                //     }
-                // }
+                function checkLocalStorage(username) {
+                
+                    var objArray = JSON.parse(localStorage.getItem("colorPicker"));
+                    var count = 0;
+                    if (objArray == null && username == 'admin') {
+                        localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
+                    } 
+                    // else {
+                    //     // if(objArray[0].username )
+                    //     // objArray.forEach(item => {
+                    //     //     if (item.username == objectJson.username && item.siteId == objectJson.siteId) {
+                    //     //         item.colorCode = objectJson.colorCode;
+                    //     //     } else {
+                    //     //         count++;
+                    //     //     }
+                    //     // });
+                    //     // if (count > 0) {
+                    //     //     objArray.push(objectJson);
+                    //     // }
+                    // }
+                }
 
                 common.btnLoading($("#btnLogin"), true);
                 $("#frmLogin").submit();

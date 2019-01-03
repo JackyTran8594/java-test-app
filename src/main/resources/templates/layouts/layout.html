@@ -11,10 +11,6 @@
     <!-- Global stylesheets -->
     <link href="/assets/css/google-font/css.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
-    <!--<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css">-->
-    <!--<link href="/assets/css/core.css" rel="stylesheet" type="text/css">-->
-    <!--<link href="/assets/css/components.css" rel="stylesheet" type="text/css">-->
-    <!--<link href="/assets/css/colors.css" rel="stylesheet" type="text/css">-->
     <link href="/assets/js/core/libraries/angularjs/tree-grid.css" rel="stylesheet" type="text/css">
     <link href="/assets/js/core/libraries/angularjs/ivh-treeview.css" rel="stylesheet" type="text/css">
     <link href="/assets/js/core/libraries/angularjs/ivh-treeview-theme-basic.css" rel="stylesheet" type="text/css">
@@ -25,6 +21,16 @@
     <link href="/assets/css/limitless/Bootstrap_3/components.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/limitless/Bootstrap_3/colors.min.css" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
+
+    <!-- colorpicker css -->
+    <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css"> -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link rel="stylesheet" href="/assets/colorPicker/style.css" />
+    <link rel="stylesheet" href="/assets/colorPicker/mdColorPicker.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- end -->
 
     <!-- Theme stylesheets files -->
     <link href="/wsplanning.css" rel="stylesheet" type="text/css">
@@ -53,7 +59,12 @@
     <!-- /theme JS files -->
 
     <!-- Angular JS files -->
-    <script type="text/javascript" src="/assets/js/core/libraries/angularjs/angular.min.js"></script>
+    <!-- <script type="text/javascript" src="/assets/js/core/libraries/angularjs/angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-cookies.min.js"></script>
+
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/checklist-model.js"></script>
@@ -67,7 +78,20 @@
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/interactions.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/fancytree_all.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/fancytree_childcounter.js"></script>
+   
+    <!-- angularjs-cookie -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-cookies.js"></script> -->
     <!-- /angular JS files -->
+
+    <!-- angularjs colorpicker material  and tiny.js-->
+    <script type="text/javascript" src="/assets/colorPicker/tinycolor.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script>
+    
+    <!-- end -->
+
+    <!-- mdcolorPicker-->
+    <script type="text/javascript" src="/assets/colorPicker/mdColorPicker.js"></script>
 
     <script type="text/javascript" src="/assets/js/multiselect/select.js"></script>
     <link href="/assets/js/multiselect/select.css" rel="stylesheet" type="text/css">
@@ -130,11 +154,6 @@
     console.log("ready!");
     $(".formValidate").validate(common.formValidate);
   });
-
-  function getData() {
-      var colorPicker = localStorage.getItem('colorPicker');
-      console.log(colorPicker);
-  }
 </script>
 </body>
 </html>

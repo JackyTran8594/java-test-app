@@ -1,4 +1,7 @@
 var UserWebApp = angular.module('UserWebApp', [
+    'ngMaterial',
+    'ngCookies',
+    'mdColorPicker',
     'ngSanitize',
     'ui.bootstrap',
     'checklist-model',
@@ -7,10 +10,11 @@ var UserWebApp = angular.module('UserWebApp', [
     'treeGrid',
     'ivh.treeview',
     'ui.bootstrap.datetimepicker',
-    'ui.select'
+    'ui.select',
+
 ]);
 
-UserWebApp.run(['uiSelect2Config', '$translate', '$rootScope', function (uiSelect2Config, $translate, $rootScope) {
+UserWebApp.run(['uiSelect2Config', '$translate', '$rootScope', '$cookies', function (uiSelect2Config, $translate, $rootScope, $cookies) {
     uiSelect2Config.placeholder = $translate.instant('placeholderSelect');
 
     // var formData = new FormData();
@@ -23,8 +27,21 @@ UserWebApp.run(['uiSelect2Config', '$translate', '$rootScope', function (uiSelec
     //     siteId: siteId
     // }
 
+    $rootScope.textBackground;
+
+
+    var siteId = $cookies.get('siteId');
+
+    $rootScope.pickerDisable = true;
     var colorObjectArray = JSON.parse(localStorage.getItem('colorPicker'));
-    $rootScope.colorCode = colorObjectArray[0].colorCode;
+
+    if (colorObjectArray[0].username == 'admin') {
+        $rootScope.pickerDisable = false;
+        $rootScope.colorCode = colorObjectArray[0].colorCode;
+    } else if (colorObjectArray[0].username !== 'admin' && colorObjectArray[0].siteId == siteId) {
+        $rootScope.colorCode = colorObjectArray[0].colorCode;
+    }
+    // if()
 
     // colorObjectArray.forEach(item => {
     //     if (item.username == objLogin.username && item.siteId == objLogin.siteId) {
