@@ -2,6 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Add js,css here -->
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css"> -->
+	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/core.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/components.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/colors.min.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- js -->
+	<script src="/assets/js/plugins/pickers/color/spectrum.js"></script>
+	<script src="/assets/js/pages/picker_color.js"></script>
+	<script src="/assets/js/plugins/ui/ripple.min.js"></script>
+	<!-- end -->
 </head>
 <body>
 
@@ -115,6 +128,14 @@
         </ul>
 
         <div class="navbar-right">
+			
+			<div class="panel panel-body border-top-success text-center">
+								<h6 class="no-margin text-semibold">Show color palette</h6>
+								<p class="content-group-sm text-muted">Display recently used colors</p>
+
+				<input type="text" class="form-control colorpicker-palette" value="#27ADCA">
+			</div>
+			
             <ul class="nav navbar-nav">
                 <li style="display: none"><span class="currentLang" id="currentLang" th:data-currentLang="${#locale}"></span></li>
                 <li class="dropdown language-switch hidden-sm">
@@ -146,8 +167,6 @@
                         </a></li>
                     </ul>
                 </li>
-
-
 
 
                 <li class="dropdown">
