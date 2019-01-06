@@ -13,6 +13,8 @@ var navBarController = angular.module('mdColorMenu').controller('navBarControlle
         '#6d7748'
     ]);
 
+    var username = angular.element('#username').val();
+    console.log(username);
 
     var vm = this;
 

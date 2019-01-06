@@ -8,7 +8,7 @@
 
 </head>
 
-<body>
+<body ng-controller="navBarController">
 
     <!-- Main navbar -->
     <div th:fragment="navbar" ng-style="{'background-color': colorCode + '!important'}" class="navbar navbar-default header-highlight">
@@ -156,7 +156,7 @@
                     <li class="dropdown dropdown-user">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/assets/images/placeholder.jpg" alt="">
-                            <span th:text="${session.username}"></span>
+                            <span id="username" th:text="${session.username}"></span>
                             <i class="caret"></i>
                         </a>
 
@@ -263,7 +263,6 @@
             $(document).ready(function () {
                 console.log("------navbar ready------");
 
-
                 $.ajax({
                     type: 'GET',
                     url: '/language/getAll',
@@ -290,6 +289,7 @@
                         console.log(errorThrown);
                     }
                 });
+
             });
         </script>
 

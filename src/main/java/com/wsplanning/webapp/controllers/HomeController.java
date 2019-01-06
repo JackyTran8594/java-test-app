@@ -28,28 +28,8 @@ import com.wsplanning.webapp.utils.colorPickerDTO;;
 @Controller
 public class HomeController {
 
-    @Autowired
-    private ColorPicker colorpicker;  
-
     @GetMapping("/")
-    public String index(Model model, HttpServletRequest request) {
-        // Map<String, String[]> queryParams = new HashMap<>();
-        // String rtn = "";
-        // String queryString = request.getQueryString();
-        // String params[] = queryString.split("&");
-        // String siteId = request.getParameter("siteId");
-        // String colorCode = request.getParameter("colorCode");
-        // String username = request.getParameter("username");
-        // // Object objectJson = request.getAttribute("object");
-        // colorPickerDTO obj = new colorPickerDTO();
-        // obj.username = username;
-        // obj.colorCode = colorCode;
-        // obj.siteId = siteId;
-        // try {
-        //     colorpicker.jsonFileColorThemes(obj);
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
+    public String index(Model model, HttpServletRequest request) {      
         return "redirect:/mechanic";
     }
 
