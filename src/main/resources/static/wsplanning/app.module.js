@@ -1,7 +1,8 @@
 var UserWebApp = angular.module('UserWebApp', [
     'ngMaterial',
     'ngCookies',
-    'mdColorPicker',
+    // 'mdColorPicker',
+    'mdColorMenu',
     'ngSanitize',
     'ui.bootstrap',
     'checklist-model',
@@ -14,22 +15,18 @@ var UserWebApp = angular.module('UserWebApp', [
 
 ]);
 
+
+// config app
+UserWebApp.config(['$mdIconProvider', function ($mdIconProvider) {
+    $mdIconProvider.icon("palette", '/assets/colorPicker/md-color-menu/ic_palette.svg');
+}]);
+
+
 UserWebApp.run(['uiSelect2Config', '$translate', '$rootScope', '$cookies', function (uiSelect2Config, $translate, $rootScope, $cookies) {
     uiSelect2Config.placeholder = $translate.instant('placeholderSelect');
 
-    // var formData = new FormData();
-    // var header = formData.getheader();
-    // var username = formData.get('username');
-    // var siteId = formData.get('siteId');
-    // debugger;
-    // var objLogin = {
-    //     username: username,
-    //     siteId: siteId
-    // }
-
     $rootScope.textBackground;
-
-
+    
     var siteId = $cookies.get('siteId');
 
     $rootScope.pickerDisable = true;

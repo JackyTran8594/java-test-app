@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      ng-app="UserWebApp">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" ng-app="UserWebApp">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,12 +23,17 @@
 
     <!-- colorpicker css -->
     <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css"> -->
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.css">
+    <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.css"> -->
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <!-- md-color-menu -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.min.css">
+    <link rel="stylesheet" href="/assets/colorPicker/md-color-menu/md-color-menu.css">
+
+
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <link rel="stylesheet" href="/assets/colorPicker/style.css" />
     <link rel="stylesheet" href="/assets/colorPicker/mdColorPicker.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- end -->
 
     <!-- Theme stylesheets files -->
@@ -59,11 +63,14 @@
     <!-- /theme JS files -->
 
     <!-- Angular JS files -->
-    <!-- <script type="text/javascript" src="/assets/js/core/libraries/angularjs/angular.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/js/core/libraries/angularjs/angular.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular-aria.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular-animate.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-cookies.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-cookies.min.js"></script> -->
 
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/ui-bootstrap-tpls-2.5.0.min.js"></script>
@@ -78,20 +85,25 @@
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/interactions.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/fancytree_all.min.js"></script>
     <script type="text/javascript" src="/assets/js/core/libraries/angularjs/fancytree_childcounter.js"></script>
-   
+
     <!-- angularjs-cookie -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-cookies.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-cookies.js"></script>
     <!-- /angular JS files -->
 
     <!-- angularjs colorpicker material  and tiny.js-->
-    <script type="text/javascript" src="/assets/colorPicker/tinycolor.js"></script>
+    <!-- <script type="text/javascript" src="/assets/colorPicker/tinycolor.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script>
-    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.min.js" type="text/javascript"></script>
+
     <!-- end -->
 
     <!-- mdcolorPicker-->
-    <script type="text/javascript" src="/assets/colorPicker/mdColorPicker.js"></script>
+    <!-- <script type="text/javascript" src="/assets/colorPicker/mdColorPicker.js"></script> -->
+
+    <!-- md-color-menu -->
+    <script src="/assets/colorPicker/md-color-menu/md-color-menu.js"></script>
+    <!-- end -->
 
     <script type="text/javascript" src="/assets/js/multiselect/select.js"></script>
     <link href="/assets/js/multiselect/select.css" rel="stylesheet" type="text/css">
@@ -108,52 +120,54 @@
     <script type="text/javascript" src="/wsplanning/app.directive.js"></script>
     <script type="text/javascript" src="/wsplanning/app.translate.js"></script>
 </head>
+
 <body class="navbar-bottom sidebar-xs">
-<div class="preloader" id="preloader1">
-    <hr/>
-    <hr/>
-    <hr/>
-    <hr/>
-</div>
-<div class="preloader" id="preloader2">
-    <hr/>
-    <hr/>
-    <hr/>
-    <hr/>
-</div>
-
-<div th:replace="layouts/fragments/navbar::navbar"></div>
-
-<!-- Page container -->
-<div class="page-container">
-
-    <!-- Page content -->
-    <div class="page-content">
-
-        <div th:replace="layouts/fragments/sitebar::sitebar"></div>
-
-
-        <!-- Main content -->
-        <div class="content-wrapper">
-
-            <div layout:fragment="content"></div>
-        </div>
-        <!-- /main content -->
-
+    <div class="preloader" id="preloader1">
+        <hr />
+        <hr />
+        <hr />
+        <hr />
     </div>
-    <!-- /page content -->
-</div>
-<!-- /page container -->
+    <div class="preloader" id="preloader2">
+        <hr />
+        <hr />
+        <hr />
+        <hr />
+    </div>
 
-<!-- Footer -->
-<div th:replace="layouts/fragments/footer::footer"></div>
-<!-- /footer -->
+    <div th:replace="layouts/fragments/navbar::navbar"></div>
 
-<script type="text/javascript">
-  $(document).ready(function () {
-    console.log("ready!");
-    $(".formValidate").validate(common.formValidate);
-  });
-</script>
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <div th:replace="layouts/fragments/sitebar::sitebar"></div>
+
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <div layout:fragment="content"></div>
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+    </div>
+    <!-- /page container -->
+
+    <!-- Footer -->
+    <div th:replace="layouts/fragments/footer::footer"></div>
+    <!-- /footer -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("ready!");
+            $(".formValidate").validate(common.formValidate);
+        });
+    </script>
 </body>
+
 </html>
