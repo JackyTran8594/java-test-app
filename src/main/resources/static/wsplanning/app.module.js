@@ -1,7 +1,8 @@
 var UserWebApp = angular.module('UserWebApp', [
     'ngMaterial',
     'ngCookies',
-    'mdColorPicker',
+    // 'mdColorPicker',
+    'mdColorMenu',
     'ngSanitize',
     'ui.bootstrap',
     'checklist-model',
@@ -14,42 +15,30 @@ var UserWebApp = angular.module('UserWebApp', [
 
 ]);
 
+
+// config app
+UserWebApp.config(['$mdIconProvider', '$windowProvider', '$httpProvider', function ($mdIconProvider, $windowProvider, $httpProvider) {
+    $mdIconProvider.icon("palette", '/assets/colorPicker/md-color-menu/ic_palette.svg');
+}]);
+
+
 UserWebApp.run(['uiSelect2Config', '$translate', '$rootScope', '$cookies', function (uiSelect2Config, $translate, $rootScope, $cookies) {
     uiSelect2Config.placeholder = $translate.instant('placeholderSelect');
+   
+    // var siteId = $cookies.get('siteId');
 
-    // var formData = new FormData();
-    // var header = formData.getheader();
-    // var username = formData.get('username');
-    // var siteId = formData.get('siteId');
-    // debugger;
-    // var objLogin = {
-    //     username: username,
-    //     siteId: siteId
-    // }
-
-    $rootScope.textBackground;
-
-
-    var siteId = $cookies.get('siteId');
+    var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    console.log(userInfo);
 
     $rootScope.pickerDisable = true;
     var colorObjectArray = JSON.parse(localStorage.getItem('colorPicker'));
 
-    if (colorObjectArray[0].username == 'admin') {
+    if (userInfo.username == 'admin') {
         $rootScope.pickerDisable = false;
         $rootScope.colorCode = colorObjectArray[0].colorCode;
-    } else if (colorObjectArray[0].username !== 'admin' && colorObjectArray[0].siteId == siteId) {
+    } else if (userInfo.username !== 'admin' && colorObjectArray[0].siteId === userInfo.siteId) {
         $rootScope.colorCode = colorObjectArray[0].colorCode;
     }
-    // if()
-
-    // colorObjectArray.forEach(item => {
-    //     if (item.username == objLogin.username && item.siteId == objLogin.siteId) {
-    //         $rootScope.colorCode = item.colorCode;
-    //     }
-    // });
-
-
 
     $('.select2').select2({
         placeholder: $translate.instant('placeholderSelect')

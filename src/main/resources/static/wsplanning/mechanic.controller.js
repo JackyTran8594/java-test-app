@@ -1,5 +1,6 @@
 UserWebApp.controller('MechanicController', function ($scope, $rootScope, HttpService, $translate, $location, $filter) {
 
+
   $scope.lstAllData = [];
   $scope.lstData = [];
   $scope.lstSearch = [];

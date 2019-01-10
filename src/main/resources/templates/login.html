@@ -131,11 +131,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div id="cpEvent" class="form-control">
-                                <input id="cpBinding" type="text" /><br />
-                            </div>
-                        </div>
                         <!--<div class="form-group">-->
                         <!--<a href="javascript:void(0)" class="forgotPasswordBtn">Forgot your account</a>-->
                         <!--</div>-->
@@ -236,41 +231,35 @@
             if ($("#frmLogin").valid()) {
                 var username = $("#username").val();
                 var siteId = $("#siteId").val();
-                // var colorCode = $("#cpBinding").val();
+                
                 var objectJson = {
                     username: username,
                     siteId: siteId,
                     colorCode: ''
                 }
 
-                
+
+                localStorage.setItem('userInfo', JSON.stringify(objectJson))
 
                 var myObjectArray = [];
                 myObjectArray.push(objectJson)
-                // var localObject = JSON.parse(localStorage.getItem("colorPicker"));
-                // localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
+
                 checkLocalStorage(username);
 
                 function checkLocalStorage(username) {
-                
+
                     var objArray = JSON.parse(localStorage.getItem("colorPicker"));
                     var count = 0;
+                    
                     if (objArray == null && username == 'admin') {
                         localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
                     } 
-                    // else {
-                    //     // if(objArray[0].username )
-                    //     // objArray.forEach(item => {
-                    //     //     if (item.username == objectJson.username && item.siteId == objectJson.siteId) {
-                    //     //         item.colorCode = objectJson.colorCode;
-                    //     //     } else {
-                    //     //         count++;
-                    //     //     }
-                    //     // });
-                    //     // if (count > 0) {
-                    //     //     objArray.push(objectJson);
-                    //     // }
-                    // }
+
+                    if( username == 'admin' && siteId !== objArray[0].siteId)
+                    {
+                        localStorage.setItem("colorPicker", JSON.stringify(myObjectArray));
+                    }
+
                 }
 
                 common.btnLoading($("#btnLogin"), true);
@@ -278,27 +267,6 @@
 
             }
         }
-
-        $(document).ready(function () {
-            function setColor(evt, color) {
-                if (color) {
-                    $('#cpEvent').css('background-color', color);
-
-                }
-            }
-
-            $('#cpBinding').colorpicker({
-                color: '#ebf1dd',
-                initialHistory: ['#ff0000', '#000000', 'red', 'purple']
-            }).on('change.color', setColor).on('mouseover.color', setColor);
-
-            // Instanciate colorpickers
-            $('#cpBinding').colorpicker({
-                color: '#ebf1dd'
-            })
-
-        })
-
 
     </script>
 </body>

@@ -3,32 +3,12 @@
 
 <head>
     <!-- Add js,css here -->
-    <!-- Global stylesheets -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/core.min.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/components.min.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/colors.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- /global stylesheets -->
-
-    <!-- js -->
-    <!-- <script src="/assets/js/plugins/pickers/color/spectrum.js"></script>
-	<script src="/assets/js/pages/picker_color.js"></script>
-	<script src="/assets/js/plugins/ui/ripple.min.js"></script> -->
+    <script type="text/javascript" src="/wsplanning/nav-bar.controller.js"></script>
     <!-- end -->
-
-    <!-- color picker -->
-    <link type="text/css" rel="stylesheet" href="assets/css/colorpicker/evol-colorpicker.css">
-    <!-- /color picker -->
-
-    <!-- color picker -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/assets/js/plugins/colorpicker/evol-colorpicker.min.js"></script>
-    <!-- /color picker -->
 
 </head>
 
-<body>
+<body ng-controller="navBarController">
 
     <!-- Main navbar -->
     <div th:fragment="navbar" ng-style="{'background-color': colorCode + '!important'}" class="navbar navbar-default header-highlight">
@@ -140,11 +120,23 @@
         			<div flex label="Text Background" md-color-picker random="true" value="textBackground" open-on-input="true"></div>
         		</div> -->
 
-                <ul class="nav navbar-nav" >
-                        <div layout="row" ng-if="pickerDisable == false">
-                                <md-icon style="margin-right: 8px;">font_download</md-icon>
-                                <div flex label="Text Background" md-color-picker random="true" value="textBackground" open-on-input="true"></div>
+                <ul class="nav navbar-nav">
+                    <li ng-if="pickerDisable == false">
+                        <!-- <div layout="row" ng-if="pickerDisable == false">
+                            <md-icon style="margin-right: 8px;">font_download</md-icon>
+                            <div flex label="Text Background" md-color-picker random="true" value="textBackground"
+                                open-on-input="true"></div>
+                        </div> -->
+                        <div>
+                            <div layout-align="center center" layout="column">
+                                <md-color-menu color="ctrl.color" value="ctrl.color.style">
+                                    <md-button aria-label="Select color" class="md-icon-button" ng-style="ctrl.color.style">
+                                        <md-icon md-svg-icon="palette" ng-style="ctrl.color.style"></md-icon>
+                                    </md-button>
+                                </md-color-menu>
                             </div>
+                        </div>
+                    </li>
                     <li style="display: none"><span class="currentLang" id="currentLang" th:data-currentLang="${#locale}"></span></li>
                     <li class="dropdown language-switch hidden-sm">
                         <a class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false"><img th:src="#{locale.current.flag}"
@@ -164,7 +156,7 @@
                     <li class="dropdown dropdown-user">
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/assets/images/placeholder.jpg" alt="">
-                            <span th:text="${session.username}"></span>
+                            <span id="username" th:text="${session.username}"></span>
                             <i class="caret"></i>
                         </a>
 
@@ -271,7 +263,6 @@
             $(document).ready(function () {
                 console.log("------navbar ready------");
 
-
                 $.ajax({
                     type: 'GET',
                     url: '/language/getAll',
@@ -298,6 +289,7 @@
                         console.log(errorThrown);
                     }
                 });
+
             });
         </script>
 

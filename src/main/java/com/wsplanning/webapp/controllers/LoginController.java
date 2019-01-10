@@ -38,27 +38,5 @@ public class LoginController {
         return "login";
     }
 
-    // color picker by VuTT
-    // @RequestMapping(value = "/color", method = RequestMethod.POST)
-    // public @ResponseBody Object color(HttpServletRequest request) {
-    //     Map<String, String[]> queryParams = new HashMap<>();
-
-    //     String queryString = request.getQueryString();
-    //     String params[] = queryString.split("&");
-    //     String siteId = request.getParameter("siteId");
-    //     String colorCode = request.getParameter("colorCode");
-    //     String username = request.getParameter("username");
-    //     Object objectJson = request.getAttribute("object");
-    //     colorPickerDTO obj = new colorPickerDTO();
-    //     obj.username = username;
-    //     obj.colorCode = colorCode;
-    //     obj.siteId = siteId;
-    //     try {
-    //         colorpicker.jsonFileColorThemes(obj);
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    //     return objectJson;
-    // }
 
 }
